@@ -1,12 +1,12 @@
 # Ex02 Django ORM Web Application
-## Date: 
+## Date: 05.03.24
 
 ## AIM
 To develop a Django application to store and retrieve data from a Book database using Object Relational Mapping(ORM).
 
 ## Entity Relationship Diagram
+![alt text](<Screenshot 2024-02-29 140623.png>)
 
-Include your ER diagram here
 
 ## DESIGN STEPS
 
@@ -24,11 +24,30 @@ Execute Django admin and create details for 10 books
 
 ## PROGRAM
 
-Include your code here
+```
+models.py
+
+from django.db import models
+from django.contrib import admin
+class Library(models.Model):
+   book=models.CharField(max_length=30);
+   bookid=models.IntegerField(primary_key=True);
+   author=models.CharField(max_length=30);
+   dept=models.CharField(max_length=30);
+   publisher=models.CharField(max_length=30);
+class LibraryAdmin(admin.ModelAdmin):
+   list_display=('book','bookid','author','dept','publisher');
+
+admin.py
+
+from django.contrib import admin
+from .models import Library,LibraryAdmin
+admin.site.register(Library,LibraryAdmin)
+```
 
 ## OUTPUT
 
-Include the screenshot of your admin page.
+![alt text](<Screenshot 2024-03-05 142212.png>)
 
 
 ## RESULT
